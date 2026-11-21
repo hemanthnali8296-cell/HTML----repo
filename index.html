@@ -1,199 +1,771 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Hemanth Kumar - Portfolio</title>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hemanth Kumar | Portfolio</title>
+
+    <!-- INTERNAL CSS -->
     <style>
-        /* General Styling */
+
+        /* GENERAL STYLING */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
+            background: #070d19;
+            color: white;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
             line-height: 1.6;
         }
 
-        /* Header */
+        /* HEADER */
+
         header {
-            background-color: #14213d;
-            color: white;
-            text-align: center;
-            padding: 40px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 8%;
+            background: rgba(5, 11, 24, 0.95);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            z-index: 100;
+            border-bottom: 1px solid #142747;
         }
 
-        header h1 {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            font-size: 18px;
-        }
-
-        /* Navigation */
-        nav {
-            background-color: #000;
-            text-align: center;
-            padding: 15px;
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #00d9ff;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin: 20px;
-            font-size: 17px;
+            margin-left: 22px;
+            font-size: 14px;
+            transition: 0.3s;
         }
 
         nav a:hover {
-            color: orange;
+            color: #00d9ff;
         }
 
-        /* Main Sections */
+        /* COMMON SECTIONS */
+
         section {
-            background-color: white;
-            margin: 25px auto;
-            padding: 25px;
-            width: 85%;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 100px 10%;
+            min-height: 70vh;
         }
 
-        section h2 {
-            color: #14213d;
-            margin-bottom: 15px;
-            border-bottom: 2px solid orange;
-            padding-bottom: 8px;
-        }
-
-        /* Skills */
-        ul {
-            padding-left: 25px;
-        }
-
-        ul li {
-            padding: 5px;
-        }
-
-        /* Contact Button */
-        button {
-            background-color: #14213d;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            margin-top: 15px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: orange;
-            color: black;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #14213d;
-            color: white;
+        .heading {
             text-align: center;
-            padding: 20px;
-            margin-top: 30px;
+            font-size: 38px;
+            margin-bottom: 45px;
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 28px;
+        .heading span {
+            color: #00d9ff;
+        }
+
+        /* HOME SECTION */
+
+        .home {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 40px;
+        }
+
+        .home-content {
+            max-width: 650px;
+        }
+
+        .home h3 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .home h1 {
+            font-size: 48px;
+            color: #00d9ff;
+            margin-bottom: 15px;
+        }
+
+        .home h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .home p {
+            color: #b5c2d5;
+            line-height: 1.8;
+        }
+
+        .typing {
+            color: #00d9ff;
+        }
+
+        /* PROFILE */
+
+        .profile {
+            width: 280px;
+            height: 280px;
+
+            border-radius: 50%;
+            border: 5px solid #00d9ff;
+
+            box-shadow: 0 0 35px #00d9ff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 75px;
+            font-weight: bold;
+            color: #00d9ff;
+
+            flex-shrink: 0;
+        }
+
+        /* BUTTON */
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+
+            background: #00d9ff;
+            color: #050b18;
+
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            box-shadow: 0 0 20px #00d9ff;
+            transform: translateY(-3px);
+        }
+
+        /* ABOUT */
+
+        .about p {
+            text-align: center;
+            max-width: 850px;
+            margin: auto;
+
+            color: #b5c2d5;
+            line-height: 2;
+        }
+
+        /* SKILLS AND PROJECTS */
+
+        .skills-container,
+        .projects-container {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 25px;
+        }
+
+        .card {
+            background: #101c32;
+            padding: 30px;
+
+            border-radius: 15px;
+            border: 1px solid #183a58;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #00d9ff;
+            box-shadow: 0 0 20px #003d59;
+        }
+
+        .card h3 {
+            color: #00d9ff;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #b5c2d5;
+            line-height: 1.7;
+        }
+
+        /* EDUCATION */
+
+        .education {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .edu-item {
+            padding: 25px;
+            background: #101c32;
+
+            border-left: 4px solid #00d9ff;
+            margin-bottom: 20px;
+
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .edu-item:hover {
+            transform: translateX(8px);
+        }
+
+        .edu-item h3 {
+            color: #00d9ff;
+            margin-bottom: 10px;
+        }
+
+        .edu-item p {
+            color: #b5c2d5;
+            line-height: 1.7;
+        }
+
+        /* VISION */
+
+        .vision {
+            background: #101c32;
+            text-align: center;
+        }
+
+        .vision p {
+            max-width: 800px;
+            margin: auto;
+            color: #b5c2d5;
+            line-height: 2;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            color: #b5c2d5;
+            margin: 15px 0;
+        }
+
+        .contact a {
+            color: #00d9ff;
+            text-decoration: none;
+        }
+
+        .socials {
+            margin-top: 25px;
+
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .socials a {
+            border: 1px solid #00d9ff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        .socials a:hover {
+            background: #00d9ff;
+            color: #050b18;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #101c32;
+            color: #b5c2d5;
+        }
+
+        /* RESPONSIVE DESIGN */
+
+        @media(max-width: 800px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
             }
 
             nav a {
-                display: inline-block;
-                margin: 5px;
+                margin: 0;
+            }
+
+            .home {
+                flex-direction: column-reverse;
+                text-align: center;
+                justify-content: center;
+                padding-top: 160px;
+            }
+
+            .home h1 {
+                font-size: 35px;
+            }
+
+            .profile {
+                width: 190px;
+                height: 190px;
+                font-size: 55px;
             }
 
             section {
-                width: 95%;
+                padding: 100px 7%;
             }
         }
+
     </style>
+
 </head>
 
 <body>
 
-    <!-- Header -->
+    <!-- HEADER -->
+
     <header>
-        <h1>Hemanth Kumar</h1>
-        <p>AI & Data Science Student | Future Entrepreneur</p>
+
+        <div class="logo">HEMANTH.</div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
     </header>
 
-    <!-- Navigation -->
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-    </nav>
 
-    <!-- Home -->
-    <section id="home">
-        <h2>Welcome to My Portfolio</h2>
-        <p>Hello! Welcome to my personal portfolio website.</p>
+    <!-- HOME -->
+
+    <section class="home" id="home">
+
+        <div class="home-content">
+
+            <h3>Hello, I'm</h3>
+
+            <h1>Nali Hemanth Kumar</h1>
+
+            <h2>
+                I'm an
+                <span class="typing" id="typing"></span>
+            </h2>
+
+            <p>
+                An enthusiastic Artificial Intelligence and
+                Data Science student passionate about
+                technology, programming, data analysis
+                and innovation.
+
+                I enjoy learning new technologies,
+                developing my technical skills and
+                transforming ideas into meaningful solutions.
+            </p>
+
+            <a href="#about" class="btn">
+                Explore My Portfolio
+            </a>
+
+        </div>
+
+        <div class="profile">
+            HK
+        </div>
+
     </section>
 
-    <!-- About -->
-    <section id="about">
-        <h2>About Me</h2>
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <h2 class="heading">
+            About <span>Me</span>
+        </h2>
+
         <p>
-            I am Hemanth Kumar, pursuing B.Tech in
-            Artificial Intelligence and Data Science.
-            I am interested in programming, data analysis,
-            technology and entrepreneurship.
+            I am Nali Hemanth Kumar, currently pursuing
+            my B.Tech in Artificial Intelligence and
+            Data Science at Sri Shanmugha College of
+            Engineering and Technology.
+
+            I have an interest in programming, data
+            analysis, artificial intelligence and
+            exploring new technologies.
+
+            I am continuously improving my knowledge
+            in C programming, Java, Python, HTML,
+            CSS and database management.
+
+            My ambition is to become an entrepreneur
+            and build innovative solutions that solve
+            real-world problems.
         </p>
+
     </section>
 
-    <!-- Education -->
-    <section id="education">
-        <h2>My Education</h2>
-        <ul>
-            <li>B.Tech - Artificial Intelligence and Data Science</li>
-            <li>Intermediate - Science Stream</li>
-            <li>10th Standard</li>
-        </ul>
-    </section>
 
-    <!-- Skills -->
+    <!-- SKILLS -->
+
     <section id="skills">
-        <h2>My Skills</h2>
-        <ul>
-            <li>C Programming</li>
-            <li>Java</li>
-            <li>Python</li>
-            <li>HTML</li>
-            <li>CSS</li>
-        </ul>
+
+        <h2 class="heading">
+            My <span>Skills</span>
+        </h2>
+
+        <div class="skills-container">
+
+            <div class="card">
+                <h3>C Programming</h3>
+                <p>
+                    Learning programming fundamentals,
+                    logic building and problem-solving.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Java</h3>
+                <p>
+                    Practising Java programming,
+                    OOP concepts and coding problems.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Python</h3>
+                <p>
+                    Exploring Python programming
+                    and data analysis.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>HTML & CSS</h3>
+                <p>
+                    Developing websites using
+                    HTML and CSS.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Git & GitHub</h3>
+                <p>
+                    Learning version control,
+                    repositories and collaboration.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>DBMS</h3>
+                <p>
+                    Learning database concepts,
+                    SQL and data management.
+                </p>
+            </div>
+
+        </div>
+
     </section>
 
-    <!-- Contact -->
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Email: example@gmail.com</p>
-        <p>Location: India</p>
 
-        <button onclick="alert('Thank you for visiting my portfolio!')">
+    <!-- EDUCATION -->
+
+    <section id="education">
+
+        <h2 class="heading">
+            My <span>Education</span>
+        </h2>
+
+        <div class="education">
+
+            <div class="edu-item">
+
+                <h3>Bachelor of Technology</h3>
+
+                <p>
+                    Sri Shanmugha College of Engineering
+                    and Technology
+                </p>
+
+                <p>
+                    Department: Artificial Intelligence
+                    and Data Science
+                </p>
+
+                <p>Currently Pursuing</p>
+
+            </div>
+
+
+            <div class="edu-item">
+
+                <h3>Intermediate</h3>
+
+                <p>
+                    Kota MJPAPBC Welfare Junior College
+                </p>
+
+                <p>Science Stream</p>
+
+                <p>Marks: 942 / 1000</p>
+
+                <p>2023 - 2025</p>
+
+            </div>
+
+
+            <div class="edu-item">
+
+                <h3>10th Standard</h3>
+
+                <p>
+                    M.J.P.A.P.B.C. Welfare School,
+                    Vettapalem
+                </p>
+
+                <p>Marks: 533 / 600</p>
+
+                <p>Completed in 2023</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- VISION -->
+
+    <section class="vision">
+
+        <h2 class="heading">
+            My <span>Career Goal</span>
+        </h2>
+
+        <p>
+            My ambition is to become an entrepreneur.
+
+            I believe technology, creativity and
+            continuous learning can transform ideas
+            into successful innovations.
+
+            My goal is to develop useful products,
+            solve real-world problems and create
+            opportunities through technology.
+        </p>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <h2 class="heading">
+            My <span>Projects</span>
+        </h2>
+
+        <div class="projects-container">
+
+            <div class="card">
+
+                <h3>Personal Portfolio</h3>
+
+                <p>
+                    A personal portfolio website developed
+                    using HTML and CSS to showcase my
+                    education, skills and achievements.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Learn Freely</h3>
+
+                <p>
+                    An educational platform concept
+                    designed to help students learn
+                    through tutorials, quizzes and
+                    AI-powered explanations.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Programming Practice</h3>
+
+                <p>
+                    Practising Java, Python and C
+                    programming through coding exercises
+                    and problem-solving challenges.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="contact">
+
+        <h2 class="heading">
+            Contact <span>Me</span>
+        </h2>
+
+        <p>
+            Have an idea or opportunity?
+            Let's connect and grow together.
+        </p>
+
+        <p>
+            Email:
+            <a href="mailto:YOUR_EMAIL@gmail.com">
+                YOUR_EMAIL@gmail.com
+            </a>
+        </p>
+
+        <div class="socials">
+
+            <a href="https://www.linkedin.com/feed/" target="_blank">
+                LinkedIn
+            </a>
+
+            <a href="https://github.com/dashboard" target="_blank">
+                GitHub
+            </a>
+
+            <a href="https://www.instagram.com/"
+               target="_blank">
+                Instagram
+            </a>
+
+        </div>
+
+        <a href="hemanthnali8296@gmail.com" class="btn">
             Contact Me
-        </button>
+        </a>
+
     </section>
 
-    <!-- Footer -->
+
+    <!-- FOOTER -->
+
     <footer>
-        <p>Copyright © 2026 Hemanth Kumar</p>
-        <p>All Rights Reserved.</p>
+
+        <p>
+            © 2026 Nali Hemanth Kumar.
+            All Rights Reserved.
+        </p>
+
+        <p>
+            Designed with HTML & Internal CSS
+        </p>
+
     </footer>
+
+
+    <!-- JAVASCRIPT FOR ANIMATED TEXT -->
+
+    <script>
+
+        const words = [
+            "AI & Data Science Student",
+            "Programmer",
+            "Data Analysis Learner",
+            "Future Entrepreneur"
+        ];
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        function typeEffect() {
+
+            const element = document.getElementById("typing");
+
+            const word = words[wordIndex];
+
+            element.textContent =
+                word.substring(0, charIndex);
+
+            if (!deleting) {
+
+                charIndex++;
+
+                if (charIndex > word.length) {
+
+                    deleting = true;
+
+                    setTimeout(typeEffect, 1000);
+
+                    return;
+                }
+
+            } else {
+
+                charIndex--;
+
+                if (charIndex < 0) {
+
+                    deleting = false;
+                    charIndex = 0;
+
+                    wordIndex =
+                        (wordIndex + 1) % words.length;
+                }
+            }
+
+            setTimeout(
+                typeEffect,
+                deleting ? 50 : 100
+            );
+        }
+
+        typeEffect();
+
+    </script>
 
 </body>
 </html>
